@@ -20,6 +20,12 @@ import todoData from './data/todoData';
 
 
 class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      answer : "Yes"
+    }
+  }
   getJokeComponent(){
     const jokeComponents = jokesData.map(joke =>{
       return (
@@ -29,10 +35,11 @@ class App extends React.Component{
     return jokeComponents
   }
   render(){
-    const date = new Date();
     return (
     <div>
       <Header username="vschool"></Header>
+      <h3>{this.state.answer}</h3>
+      <ChildComponent answer={this.state.answer}></ChildComponent>
       <Todo items={todoData}></Todo>
       <Greeting></Greeting>
     </div>
