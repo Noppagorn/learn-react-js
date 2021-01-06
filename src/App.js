@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import React from "react"
+import React, { Component } from "react"
 
 
 import './components/style.css'
 
 import MyInfo from "./components/MyInfo.js"
-import Header from "./components/Header.js"
+// import Header from "./components/Header.js"
 import Hello from "./components/hello.js"
 import Footer from "./components/Footer.js"
 import Contact from "./components/Contact"
@@ -32,10 +32,43 @@ class App extends React.Component{
     const date = new Date();
     return (
     <div>
+      <Header username="vschool"></Header>
       <Todo items={todoData}></Todo>
+      <Greeting></Greeting>
     </div>
     )
   }
 }
 
+class Header extends React.Component {
+  render(){
+    return (
+    <header>
+        <p>Welcome, {this.props.username}!</p>
+      </header>
+    )
+  }
+}
+
+class Greeting extends Component {
+  render () {
+    const date = new Date()
+    const hours = date.getHours()
+    let timeOfDay
+
+    if (hours < 12){
+      timeOfDay = "morning"
+    }
+    else if (hours >= 12 && hours < 17){
+      timeOfDay = "afternoon"
+    }
+    else{
+      timeOfDay = "night"
+    }
+
+    return (
+      <h1> Good {timeOfDay} to you, sir or madam!</h1>
+    )
+  }
+}
 export default App;
