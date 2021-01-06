@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-
+import React from "react"
 
 
 import './components/style.css'
@@ -16,18 +16,26 @@ import TodoItem from "./components/TodoItem"
 
 import jokesData from "./data/jokesdata"
 import todoData from './data/todoData';
-function App() {
-  const jokeComponents = jokesData.map(joke =>{
-    return (
-      <Joke key={joke.id} joke={joke}></Joke>
-    )
-  })
 
-  return (
+
+
+class App extends React.Component{
+  getJokeComponent(){
+    const jokeComponents = jokesData.map(joke =>{
+      return (
+        <Joke key={joke.id} joke={joke}></Joke>
+        )
+      })
+    return jokeComponents
+  }
+  render(){
+    const date = new Date();
+    return (
     <div>
       <Todo items={todoData}></Todo>
     </div>
-  );
+    )
+  }
 }
 
 export default App;
