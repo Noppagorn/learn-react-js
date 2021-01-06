@@ -23,6 +23,7 @@ class App extends React.Component{
   constructor(){
     super()
     this.state = {
+      isLoggedIn: true,
       name : "tong",
       age : 23,
       answer : "Yes"
@@ -37,14 +38,21 @@ class App extends React.Component{
     return jokeComponents
   }
   render(){
+    let wordDisplay
+
+    if (this.state.isLoggedIn){
+      wordDisplay = "in"
+    }
+    else{
+      wordDisplay = "out"
+    }
+
     return (
     <div>
       <Header username="vschool"></Header>
+      
+    <h1>you are currently logged {wordDisplay}</h1>
 
-      <h1>{this.state.name}</h1>
-      <h3>{this.state.age}</h3>
-
-      <h3>{this.state.answer}</h3>
       <Todo items={todoData}></Todo>
       <Greeting></Greeting>
     </div>
