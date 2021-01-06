@@ -16,15 +16,9 @@ import Joke from "./components/Joke"
 
 import jokesData from "./data/jokesdata"
 function App() {
-  // const nums = [1,2,3,4,5,6,7]
-  // const doubled =  nums.map((num) => {
-  //   return num * 2
-  // })
-  // console.log(doubled)
-
   const jokeComponents = jokesData.map(joke =>{
     return (
-      <Joke key={joke.id} question={joke.question} punchLing={joke.punchLine}></Joke>
+      <Joke key={joke.id} joke={joke}></Joke>
     )
   })
 
