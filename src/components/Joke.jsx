@@ -1,6 +1,7 @@
 import React from "react"
 
 function Joke(props){
+    console.log("This Joke")
     console.log(props.question);
     return (
         <div>
