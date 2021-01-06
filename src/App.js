@@ -12,9 +12,10 @@ import Footer from "./components/Footer.js"
 import Contact from "./components/Contact"
 import Todo from "./components/Todo.js"
 import Joke from "./components/Joke"
-
+import TodoItem from "./components/TodoItem"
 
 import jokesData from "./data/jokesdata"
+import todoData from './data/todoData';
 function App() {
   const jokeComponents = jokesData.map(joke =>{
     return (
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <div>
-      {jokeComponents}
+      <Todo items={todoData}></Todo>
     </div>
   );
 }
