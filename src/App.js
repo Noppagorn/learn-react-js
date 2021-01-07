@@ -7,6 +7,7 @@ import "./style/style.css"
 import todoData from "./data/todoData"
 import TodoItem from "./components/TodoItem"
 
+import ExampleClass from "./components/ExampleCheck"
 
 import ClickMe from "./components/ClickMe"
 class App extends React.Component{
@@ -19,6 +20,17 @@ class App extends React.Component{
     }
     this.handleClickCounting = this.handleClickCounting.bind(this)
     this.handleResetButton = this.handleResetButton.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(id){
+    let newtodos = this.state.todos
+    newtodos.forEach(element => {
+      if (element.id === id){
+        element.completed = !element.completed
+      }
+    })
+    this.setState({ todos : newtodos })
   }
 
   handleClickCounting (){
@@ -40,7 +52,7 @@ class App extends React.Component{
   render(){
     const todoItem = this.state.todos.map(item =>{
       return (
-        <TodoItem key={item.id} item={item}></TodoItem>
+        <TodoItem key={item.id} item={item} handleChange={this.handleChange}></TodoItem>
       )
     })
     return (
