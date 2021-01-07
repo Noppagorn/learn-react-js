@@ -24,13 +24,24 @@ class App extends React.Component{
   }
 
   handleChange(id){
-    let newtodos = this.state.todos
-    newtodos.forEach(element => {
-      if (element.id === id){
-        element.completed = !element.completed
+    // let newtodos = this.state.todos
+    // newtodos.forEach(element => {
+    //   if (element.id === id){
+    //     element.completed = !element.completed
+    //   }
+    // })
+    // this.setState({ todos : newtodos })
+    this.setState(prevState => {
+      const updatedTodos = prevState.todos.map(todo => {
+        if (todo.id === id){
+          todo.completed = !todo.completed
+        }
+        return todo
+      })
+      return {
+        todos : updatedTodos
       }
     })
-    this.setState({ todos : newtodos })
   }
 
   handleClickCounting (){
