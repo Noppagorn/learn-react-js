@@ -18,12 +18,21 @@ class App extends React.Component{
       count : 0
     }
     this.handleClickCounting = this.handleClickCounting.bind(this)
+    this.handleResetButton = this.handleResetButton.bind(this)
   }
 
   handleClickCounting (){
     this.setState((prevState) =>{
       return {
           count : prevState.count + 1
+      }
+    })
+  }
+
+  handleResetButton(){
+    this.setState((prevState) => {
+      return {
+        count : 0
       }
     })
   }
@@ -38,16 +47,12 @@ class App extends React.Component{
       <div className="todo-list">
         {todoItem}
         <h1>{this.state.count}</h1>
-        <button onClick={this.handleClickCounting}>Change!</button>
+        <div>
+          <button onClick={this.handleClickCounting}>Change!</button>
+          <button onClick={this.handleResetButton} style={{margin:"10px"}}>Reset</button>
+        </div>
       </div>
     )
   }
 }
-
-// class Counting extends React.Component{
-//   render(){
-
-//   }
-// }
-
 export default App
