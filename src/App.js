@@ -1,94 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { Component } from "react"
+import React from "react"
+import './App.css'
+import Todo from "./components/Todo"
 
+import "./style/style.css"
 
-import './components/style.css'
-
-import MyInfo from "./components/MyInfo.js"
-// import Header from "./components/Header.js"
-import Hello from "./components/hello.js"
-import Footer from "./components/Footer.js"
-import Contact from "./components/Contact"
-import Todo from "./components/Todo.js"
-import Joke from "./components/Joke"
+import todoData from "./data/todoData"
 import TodoItem from "./components/TodoItem"
-
-import jokesData from "./data/jokesdata"
-import todoData from './data/todoData';
-
-
-
 class App extends React.Component{
   constructor(){
     super()
     this.state = {
-      isLoggedIn: true,
-      name : "tong",
-      age : 23,
-      answer : "Yes"
+      name : "Tong",
+      todos : todoData
     }
   }
-  getJokeComponent(){
-    const jokeComponents = jokesData.map(joke =>{
+  render(){
+    const todoItem = this.state.todos.map(item =>{
       return (
-        <Joke key={joke.id} joke={joke}></Joke>
-        )
-      })
-    return jokeComponents
-  }
-  render(){
-    let wordDisplay
-
-    if (this.state.isLoggedIn){
-      wordDisplay = "in"
-    }
-    else{
-      wordDisplay = "out"
-    }
-
+        <TodoItem key={item.id} item={item}></TodoItem>
+      )
+    })
     return (
-    <div>
-      <Header username="vschool"></Header>
-      
-    <h1>you are currently logged {wordDisplay}</h1>
-
-      <Todo items={todoData}></Todo>
-      <Greeting></Greeting>
-    </div>
+      <div className="todo-list">
+        {todoItem}
+      </div>
     )
   }
 }
 
-class Header extends React.Component {
-  render(){
-    return (
-    <header>
-        <p>Welcome, {this.props.username}!</p>
-      </header>
-    )
-  }
-}
 
-class Greeting extends Component {
-  render () {
-    const date = new Date()
-    const hours = date.getHours()
-    let timeOfDay
-
-    if (hours < 12){
-      timeOfDay = "morning"
-    }
-    else if (hours >= 12 && hours < 17){
-      timeOfDay = "afternoon"
-    }
-    else{
-      timeOfDay = "night"
-    }
-
-    return (
-      <h1> Good {timeOfDay} to you, sir or madam!</h1>
-    )
-  }
-}
-export default App;
+export default App

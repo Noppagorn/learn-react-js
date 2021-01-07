@@ -7,7 +7,7 @@ function Todo(props){
         )
     })
     return (
-        <div>
+        <div className="todo-list">
             {todoComponent}
         </div>
     )
